@@ -1,0 +1,329 @@
+/* ---------- Base ---------- */
+:root {
+  --bg: #f7f7f8;
+  --card: #ffffff;
+  --text: #2b2b2b;
+  --muted: #8b8b8b;
+  --border: #e6e6e6;
+  --accent: #111111;
+  --accent-soft: #f1f1f1;
+  --danger: #e74c3c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* ---------- Layout ---------- */
+.app-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* ---------- Header ---------- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.date-today {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ---------- Navigation ---------- */
+.top-nav {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.nav-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.nav-btn.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+/* ---------- Tabs ---------- */
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* ---------- Buttons ---------- */
+button {
+  font-family: inherit;
+}
+
+.btn-add-order,
+.btn-log-work {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.btn-save {
+  width: 100%;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+
+.btn-secondary {
+  background: var(--accent-soft);
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+}
+
+/* ---------- Filters ---------- */
+.filter-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.search-box {
+  flex: 1;
+  min-width: 200px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+
+.status-filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  cursor: pointer;
+  color: var(--muted);
+}
+
+.filter-btn.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+/* ---------- Cards ---------- */
+.order-card,
+.worker-payment-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 15px;
+}
+
+.client-name {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.client-phone,
+.order-date {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.measurements,
+.price-breakdown,
+.dates-info {
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.total-row {
+  font-weight: 600;
+}
+
+.balance-due {
+  font-weight: 600;
+}
+
+/* ---------- Actions ---------- */
+.card-actions,
+.payment-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.btn-edit,
+.btn-delete,
+.btn-delete-payment,
+.btn-mark-paid {
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.btn-delete,
+.btn-delete-payment {
+  color: var(--danger);
+  border-color: #f3c2bd;
+}
+
+/* ---------- Modals ---------- */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 100;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 20px;
+  width: 100%;
+  max-width: 500px;
+  position: relative;
+}
+
+.modal-small {
+  max-width: 360px;
+}
+
+.modal-close {
+  position: absolute;
+  right: 14px;
+  top: 10px;
+  border: none;
+  background: transparent;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* ---------- Forms ---------- */
+label {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 12px;
+  display: block;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  margin-top: 4px;
+}
+
+.input-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+.readonly-input {
+  background: #fafafa;
+}
+
+/* ---------- Empty State ---------- */
+.empty-state {
+  text-align: center;
+  padding: 40px 10px;
+  color: var(--muted);
+}
+
+.empty-state-icon {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+/* ---------- Calendar ---------- */
+.calendar {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.calendar th,
+.calendar td {
+  border: 1px solid var(--border);
+  padding: 8px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.calendar-off {
+  background: #fafafa;
+  color: var(--muted);
+}
