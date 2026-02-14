@@ -1,322 +1,144 @@
-/* ========== RESET ========== */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: "Segoe UI", sans-serif;
-}
-
+/* Page Background */
 body {
-    background: #f4f6fb;
-    color: #2c3e50;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #f3f4f6;
+  color: #333;
 }
 
-/* ========== CONTAINER ========== */
-.app-container {
-    max-width: 500px;
-    margin: auto;
-    padding: 12px;
+/* Main Container */
+.container {
+  max-width: 420px;
+  margin: auto;
+  padding: 20px;
 }
 
-/* ========== HEADER ========== */
+/* Header */
 .header {
-    text-align: center;
-    margin-bottom: 15px;
+  font-size: 26px;
+  font-weight: 600;
+  padding: 20px 0;
+  color: #2d3748;
 }
 
-.header h1 {
-    font-size: 22px;
-    font-weight: 600;
-    color: #5b4b8a;
+/* Customer Section */
+.customer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 25px;
 }
 
-.date-today {
-    font-size: 13px;
-    color: #7f8c8d;
+.avatar {
+  width: 100px;
+  height: 100px;
+  background: #e5e7eb;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 42px;
 }
 
-/* ========== TOP NAV ========== */
-.top-nav {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-    gap: 8px;
+.info h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
 }
 
-.nav-btn {
-    flex: 1;
-    padding: 8px;
-    border-radius: 20px;
-    border: none;
-    background: #eaeaf4;
-    font-size: 13px;
-    cursor: pointer;
-    transition: 0.2s;
+.info p {
+  margin: 6px 0 0;
+  color: #6b7280;
 }
 
-.nav-btn.active {
-    background: #5b4b8a;
-    color: white;
+/* Section Titles */
+.section-title {
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  color: #9ca3af;
+  margin: 25px 0 10px;
 }
 
-/* ========== BUTTONS ========== */
-.btn-add-order,
-.btn-log-work {
-    width: 100%;
-    padding: 10px;
-    border-radius: 8px;
-    border: none;
-    background: #5b4b8a;
-    color: white;
-    font-weight: 600;
-    margin-bottom: 12px;
-    cursor: pointer;
+/* Card Style */
+.card {
+  background: #ffffff;
+  padding: 18px;
+  border-radius: 14px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
 }
 
-.btn-add-order:hover,
-.btn-log-work:hover {
-    background: #473a6e;
+/* Measurements */
+.measurements {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
 }
 
-/* ========== SEARCH & FILTER ========== */
-.search-box {
-    width: 100%;
-    padding: 8px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    margin-bottom: 10px;
+.measurements span {
+  display: block;
+  color: #6b7280;
+  font-size: 14px;
 }
 
-.status-filters {
-    display: flex;
-    overflow-x: auto;
-    gap: 6px;
-    margin-bottom: 10px;
+.measurements strong {
+  font-size: 20px;
+  margin-top: 6px;
+  display: block;
 }
 
-.filter-btn {
-    padding: 6px 10px;
-    border-radius: 20px;
-    border: none;
-    background: #eaeaf4;
-    font-size: 12px;
-    cursor: pointer;
+/* Pricing Rows */
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 16px;
 }
 
-.filter-btn.active {
-    background: #5b4b8a;
-    color: white;
+.row:last-child {
+  margin-bottom: 0;
 }
 
-/* ========== ORDER CARD ========== */
-.order-card {
-    background: white;
-    border-radius: 12px;
-    padding: 12px;
-    margin-bottom: 12px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-    font-size: 13px;
+/* Divider */
+hr {
+  border: none;
+  border-top: 1px solid #e5e7eb;
+  margin: 12px 0;
 }
 
-.client-name {
-    font-weight: 600;
-    font-size: 14px;
-    margin-bottom: 3px;
+/* Subtotal */
+.subtotal {
+  font-weight: 500;
 }
 
-.client-phone {
-    color: #7f8c8d;
-    font-size: 12px;
+/* Prepayment (Red) */
+.prepayment {
+  color: #e53935;
+  font-weight: 500;
 }
 
-.price-row {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 3px;
+/* Total Due */
+.total {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 8px;
 }
 
-.total-row {
-    font-weight: 600;
-    color: #5b4b8a;
+/* Dates Section */
+.date-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 16px;
 }
 
-.balance-due {
-    color: #e74c3c;
-    font-weight: 600;
+.date-row:last-child {
+  margin-bottom: 0;
 }
 
-.card-actions {
-    margin-top: 8px;
-    display: flex;
-    gap: 6px;
-}
-
-.card-actions button {
-    flex: 1;
-    padding: 6px;
-    border-radius: 6px;
-    border: none;
-    font-size: 12px;
-    cursor: pointer;
-}
-
-.btn-edit {
-    background: #dfe6ff;
-}
-
-.btn-delete {
-    background: #ffe1e1;
-}
-
-/* ========== MODAL ========== */
-.modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.4);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-}
-
-.modal.active {
-    display: flex;
-}
-
-.modal-content {
-    background: white;
-    width: 100%;
-    max-height: 90vh;
-    overflow-y: auto;
-    border-radius: 14px;
-    padding: 15px;
-    position: relative;
-}
-
-/* Smaller modal for delete */
-.modal-small {
-    max-width: 320px;
-}
-
-.modal-close {
-    position: absolute;
-    right: 12px;
-    top: 8px;
-    font-size: 20px;
-    border: none;
-    background: none;
-    cursor: pointer;
-}
-
-/* ========== FORM ========== */
-form label {
-    font-size: 12px;
-    margin-top: 8px;
-    display: block;
-}
-
-form input,
-form select {
-    width: 100%;
-    padding: 7px;
-    border-radius: 6px;
-    border: 1px solid #ddd;
-    margin-top: 3px;
-    font-size: 13px;
-}
-
-.input-row {
-    display: flex;
-    gap: 6px;
-}
-
-.input-group {
-    flex: 1;
-}
-
-.readonly-input {
-    background: #f1f2f6;
-}
-
-.btn-save {
-    width: 100%;
-    padding: 10px;
-    border-radius: 8px;
-    border: none;
-    background: #5b4b8a;
-    color: white;
-    font-weight: 600;
-    margin-top: 15px;
-    position: sticky;
-    bottom: 0;
-}
-
-/* ========== EMPTY STATE ========== */
-.empty-state {
-    text-align: center;
-    padding: 20px;
-    color: #7f8c8d;
-    font-size: 13px;
-}
-
-/* ========== CALENDAR SIMPLE STYLE ========== */
-.calendar table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 12px;
-}
-
-.calendar th,
-.calendar td {
-    text-align: center;
-    padding: 6px;
-    border: 1px solid #eee;
-}
-
-.calendar td {
-    height: 45px;
-    cursor: pointer;
-}
-
-.calendar-off {
-    background: #f8f8f8;
-}
-
-/* ========== WORKER PAY CARD ========== */
-.worker-payment-card {
-    background: white;
-    padding: 12px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-    font-size: 13px;
-}
-
-.payment-status {
-    font-size: 11px;
-    font-weight: 600;
-}
-
-.payment-status.paid {
-    color: #27ae60;
-}
-
-.payment-status.unpaid {
-    color: #e67e22;
-}
-
-.btn-mark-paid {
-    background: #dfffe8;
-    border: none;
-    padding: 6px;
-    border-radius: 6px;
-    font-size: 12px;
-}
-
-.btn-delete-payment {
-    background: #ffe1e1;
-    border: none;
-    padding: 6px;
-    border-radius: 6px;
-    font-size: 12px;
+.due {
+  color: #e53935;
+  font-weight: 600;
 }
