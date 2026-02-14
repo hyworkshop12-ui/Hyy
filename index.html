@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>👗 Dress Workshop - Order Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <h1>👗 Workshop</h1>
+            <p class="date-today" id="todayDate"></p>
+        </header>
+
+        <!-- Top Navigation -->
+        <nav class="top-nav">
+            <button class="nav-btn active" data-tab="orders">📋 Orders</button>
+            <button class="nav-btn" data-tab="calendar">📅 Calendar</button>
+            <button class="nav-btn" data-tab="worker">👷 Worker Pay</button>
+        </nav>
+
+        <!-- ORDERS TAB -->
+        <section id="orders-tab" class="tab-content active">
+            <!-- Add Order Button -->
+            <button class="btn-add-order" id="btnAddOrder">+ Add New Order</button>
+
+            <!-- Filter & Search -->
+            <div class="filter-section">
+                <input type="text" id="searchInput" placeholder="🔍 Search client name..." class="search-box">
+                <div class="status-filters">
+                    <button class="filter-btn active" data-status="all">All</button>
+                    <button class="filter-btn" data-status="Cutting">✂️ Cutting</button>
+                    <button class="filter-btn" data-status="Sewing">🧵 Sewing</button>
+                    <button class="filter-btn" data-status="Embroidery">✨ Embroidery</button>
+                    <button class="filter-btn" data-status="Gems">💎 Gems</button>
+                    <button class="filter-btn" data-status="Done">✅ Done</button>
+                </div>
+            </div>
+
+            <!-- Orders by Status -->
+            <div id="ordersContainer"></div>
+        </section>
+
+        <!-- CALENDAR TAB -->
+        <section id="calendar-tab" class="tab-content">
+            <div class="calendar-section">
+                <div class="calendar-header">
+                    <button id="prevMonth" class="btn-month">&lt;</button>
+                    <h2 id="monthYear"></h2>
+                    <button id="nextMonth" class="btn-month">&gt;</button>
+                </div>
+                <div id="calendar" class="calendar"></div>
+            </div>
+            <div id="dayOrdersContainer" class="day-orders"></div>
+        </section>
+
+        <!-- WORKER PAYMENT TAB -->
+        <section id="worker-tab" class="tab-content">
+            <button class="btn-log-work" id="btnLogWork">+ Log Worker Payment</button>
+
+            <!-- Worker Payment Entries -->
+            <div id="workerPaymentsContainer"></div>
+        </section>
+    </div>
+
+    <!-- MODAL - Add/Edit Order -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h2 id="modalTitle">Add New Order</h2>
+
+            <form id="orderForm">
+                <label>Client Name *</label>
+                <input type="text" id="clientName" required placeholder="Enter client name">
+
+                <label>Phone Number *</label>
+                <input type="tel" id="phoneNumber" required placeholder="Enter phone number">
+
+                <label>Measurements</label>
+                <div class="input-row">
+                    <div class="input-group">
+                        <label>Bust (cm)</label>
+                        <input type="number" id="bust" placeholder="0">
+                    </div>
+                    <div class="input-group">
+                        <label>Waist (cm)</label>
+                        <input type="number" id="waist" placeholder="0">
+                    </div>
+                    <div class="input-group">
+                        <label>Height (cm)</label>
+                        <input type="number" id="height" placeholder="0">
+                    </div>
+                </div>
+
+                <label>Pricing</label>
+                <div class="input-row">
+                    <div class="input-group">
+                        <label>Embroidery</label>
+                        <input type="number" id="embroideryPrice" placeholder="0" min="0" step="0.01">
+                    </div>
+                    <div class="input-group">
+                        <label>Sewing</label>
+                        <input type="number" id="sewingPrice" placeholder="0" min="0" step="0.01">
+                    </div>
+                </div>
+
+                <div class="input-row">
+                    <div class="input-group">
+                        <label>Gems</label>
+                        <input type="number" id="gemsPrice" placeholder="0" min="0" step="0.01">
+                    </div>
+                    <div class="input-group">
+                        <label>Fabric</label>
+                        <input type="number" id="fabricPrice" placeholder="0" min="0" step="0.01">
+                    </div>
+                </div>
+
+                <div class="input-row">
+                    <div class="input-group">
+                        <label>Extra</label>
+                        <input type="number" id="extraPrice" placeholder="0" min="0" step="0.01">
+                    </div>
+                    <div class="input-group">
+                        <label>Prepayment</label>
+                        <input type="number" id="prepayment" placeholder="0" min="0" step="0.01">
+                    </div>
+                </div>
+
+                <label>Total (Auto)</label>
+                <input type="number" id="total" readonly class="readonly-input">
+
+                <label>Due Date *</label>
+                <input type="date" id="dueDate" required>
+
+                <label>Status *</label>
+                <select id="status" required>
+                    <option value="Cutting">✂️ Cutting</option>
+                    <option value="Sewing">🧵 Sewing</option>
+                    <option value="Embroidery">✨ Embroidery</option>
+                    <option value="Gems">💎 Gems</option>
+                    <option value="Done">✅ Done</option>
+                </select>
+
+                <button type="submit" class="btn-save">Save Order</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL - Worker Payment -->
+    <div id="workerPaymentModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h2>Log Worker Payment</h2>
+
+            <form id="workerPaymentForm">
+                <label>Select Dress *</label>
+                <select id="dressSelect" required></select>
+
+                <label>Worker Name *</label>
+                <input type="text" id="workerName" required placeholder="Enter worker name">
+
+                <label>Payment Amount *</label>
+                <input type="number" id="paymentAmount" required placeholder="0" min="0" step="0.01">
+
+                <label>Payment Date</label>
+                <input type="date" id="paymentDate" readonly class="readonly-input">
+
+                <label>Paid?</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="isPaid">
+                        Mark as Paid
+                    </label>
+                </div>
+
+                <div id="paidDateContainer" style="display: none;">
+                    <label>Date Paid (Auto)</label>
+                    <input type="date" id="datePaid" readonly class="readonly-input">
+                </div>
+
+                <button type="submit" class="btn-save">Save Payment Record</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL - Confirm Delete -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content modal-small">
+            <h2>Confirm Delete</h2>
+            <p id="deleteMessage"></p>
+            <div class="modal-buttons">
+                <button id="btnConfirmDelete" class="btn-danger">Delete</button>
+                <button id="btnCancelDelete" class="btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+  </html>
