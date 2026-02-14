@@ -1,291 +1,322 @@
-:root {
-  --bg: #f6f7f9;
-  --card: #ffffff;
-  --text: #222;
-  --muted: #7a7a7a;
-  --border: #e4e6eb;
-  --accent: #2c2c2c;
-
-  --cutting: #e3f2fd;
-  --sewing: #ede7f6;
-  --embroidery: #fff8e1;
-  --gems: #e0f2f1;
-  --done: #e8f5e9;
-}
-
+/* ========== RESET ========== */
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", sans-serif;
 }
 
 body {
-  margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: var(--bg);
-  color: var(--text);
+    background: #f4f6fb;
+    color: #2c3e50;
 }
 
+/* ========== CONTAINER ========== */
 .app-container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 20px;
+    max-width: 500px;
+    margin: auto;
+    padding: 12px;
 }
 
-/* ---------- HEADER ---------- */
+/* ========== HEADER ========== */
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+    text-align: center;
+    margin-bottom: 15px;
 }
 
 .header h1 {
-  font-size: 22px;
-  margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+    color: #5b4b8a;
 }
 
 .date-today {
-  font-size: 13px;
-  color: var(--muted);
+    font-size: 13px;
+    color: #7f8c8d;
 }
 
-/* ---------- NAV ---------- */
+/* ========== TOP NAV ========== */
 .top-nav {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    gap: 8px;
 }
 
 .nav-btn {
-  padding: 8px 14px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: transparent;
-  font-size: 13px;
-  cursor: pointer;
-  color: var(--muted);
+    flex: 1;
+    padding: 8px;
+    border-radius: 20px;
+    border: none;
+    background: #eaeaf4;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.2s;
 }
 
 .nav-btn.active {
-  background: var(--accent);
-  color: #fff;
+    background: #5b4b8a;
+    color: white;
 }
 
-/* ---------- BUTTONS ---------- */
+/* ========== BUTTONS ========== */
 .btn-add-order,
-.btn-log-work,
-.btn-save {
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 10px;
-  cursor: pointer;
+.btn-log-work {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background: #5b4b8a;
+    color: white;
+    font-weight: 600;
+    margin-bottom: 12px;
+    cursor: pointer;
 }
 
-.btn-save {
-  width: 100%;
-  margin-top: 15px;
+.btn-add-order:hover,
+.btn-log-work:hover {
+    background: #473a6e;
 }
 
-/* ---------- FILTER ---------- */
-.filter-section {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-}
-
+/* ========== SEARCH & FILTER ========== */
 .search-box {
-  flex: 1;
-  min-width: 200px;
-  padding: 10px 12px;
-  border-radius: 10px;
-  border: 1px solid var(--border);
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
 }
 
 .status-filters {
-  display: flex;
-  gap: 8px;
+    display: flex;
+    overflow-x: auto;
+    gap: 6px;
+    margin-bottom: 10px;
 }
 
 .filter-btn {
-  border-radius: 999px;
-  padding: 6px 10px;
-  border: 1px solid var(--border);
-  background: transparent;
-  font-size: 12px;
-  cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 20px;
+    border: none;
+    background: #eaeaf4;
+    font-size: 12px;
+    cursor: pointer;
 }
 
 .filter-btn.active {
-  background: var(--accent);
-  color: #fff;
+    background: #5b4b8a;
+    color: white;
 }
 
-/* ---------- ORDER CARD ---------- */
+/* ========== ORDER CARD ========== */
 .order-card {
-  border-radius: 16px;
-  padding: 14px;
-  margin-bottom: 14px;
-  border: 1px solid var(--border);
-  transition: all 0.25s ease;
-}
-
-.order-card.cutting { background: var(--cutting); }
-.order-card.sewing { background: var(--sewing); }
-.order-card.embroidery { background: var(--embroidery); }
-.order-card.gems { background: var(--gems); }
-.order-card.done { background: var(--done); }
-
-/* ---------- COLLAPSIBLE ---------- */
-.order-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-}
-
-.client-info {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.client-avatar {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: #333;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 600;
+    background: white;
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    font-size: 13px;
 }
 
 .client-name {
-  font-weight: 600;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 3px;
 }
 
-.order-date {
-  font-size: 12px;
-  color: var(--muted);
+.client-phone {
+    color: #7f8c8d;
+    font-size: 12px;
 }
 
-.order-quick {
-  text-align: right;
-  font-size: 12px;
-}
-
-.order-total {
-  font-weight: 600;
-}
-
-/* body hidden by default */
-.order-body {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: all 0.3s ease;
-}
-
-.order-card.expanded .order-body {
-  max-height: 1200px;
-  opacity: 1;
-  margin-top: 14px;
-}
-
-/* ---------- DETAILS ---------- */
 .price-row {
-  display: flex;
-  justify-content: space-between;
-  font-size: 13px;
-  margin-bottom: 4px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3px;
 }
 
 .total-row {
-  font-weight: 600;
+    font-weight: 600;
+    color: #5b4b8a;
+}
+
+.balance-due {
+    color: #e74c3c;
+    font-weight: 600;
 }
 
 .card-actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 12px;
+    margin-top: 8px;
+    display: flex;
+    gap: 6px;
 }
 
-.btn-edit,
+.card-actions button {
+    flex: 1;
+    padding: 6px;
+    border-radius: 6px;
+    border: none;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.btn-edit {
+    background: #dfe6ff;
+}
+
 .btn-delete {
-  padding: 6px 10px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  background: transparent;
-  cursor: pointer;
+    background: #ffe1e1;
 }
 
-.btn-delete {
-  color: #c0392b;
-}
-
-/* ---------- MODAL ---------- */
+/* ========== MODAL ========== */
 .modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.45);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
 }
 
 .modal.active {
-  display: flex;
+    display: flex;
 }
 
 .modal-content {
-  background: #fff;
-  padding: 20px;
-  border-radius: 16px;
-  width: 100%;
-  max-width: 500px;
-  position: relative;
+    background: white;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 14px;
+    padding: 15px;
+    position: relative;
+}
+
+/* Smaller modal for delete */
+.modal-small {
+    max-width: 320px;
 }
 
 .modal-close {
-  position: absolute;
-  right: 14px;
-  top: 10px;
-  background: none;
-  border: none;
-  font-size: 22px;
-  cursor: pointer;
+    position: absolute;
+    right: 12px;
+    top: 8px;
+    font-size: 20px;
+    border: none;
+    background: none;
+    cursor: pointer;
 }
 
-/* ---------- FORMS ---------- */
-label {
-  font-size: 12px;
-  color: var(--muted);
-  margin-top: 12px;
-  display: block;
+/* ========== FORM ========== */
+form label {
+    font-size: 12px;
+    margin-top: 8px;
+    display: block;
 }
 
-input,
-select {
-  width: 100%;
-  padding: 10px 12px;
-  border-radius: 10px;
-  border: 1px solid var(--border);
-  margin-top: 4px;
+form input,
+form select {
+    width: 100%;
+    padding: 7px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    margin-top: 3px;
+    font-size: 13px;
 }
 
 .input-row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 10px;
+    display: flex;
+    gap: 6px;
 }
 
-/* ---------- EMPTY ---------- */
+.input-group {
+    flex: 1;
+}
+
+.readonly-input {
+    background: #f1f2f6;
+}
+
+.btn-save {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background: #5b4b8a;
+    color: white;
+    font-weight: 600;
+    margin-top: 15px;
+    position: sticky;
+    bottom: 0;
+}
+
+/* ========== EMPTY STATE ========== */
 .empty-state {
-  text-align: center;
-  padding: 40px;
-  color: var(--muted);
+    text-align: center;
+    padding: 20px;
+    color: #7f8c8d;
+    font-size: 13px;
+}
+
+/* ========== CALENDAR SIMPLE STYLE ========== */
+.calendar table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+.calendar th,
+.calendar td {
+    text-align: center;
+    padding: 6px;
+    border: 1px solid #eee;
+}
+
+.calendar td {
+    height: 45px;
+    cursor: pointer;
+}
+
+.calendar-off {
+    background: #f8f8f8;
+}
+
+/* ========== WORKER PAY CARD ========== */
+.worker-payment-card {
+    background: white;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    font-size: 13px;
+}
+
+.payment-status {
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.payment-status.paid {
+    color: #27ae60;
+}
+
+.payment-status.unpaid {
+    color: #e67e22;
+}
+
+.btn-mark-paid {
+    background: #dfffe8;
+    border: none;
+    padding: 6px;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+.btn-delete-payment {
+    background: #ffe1e1;
+    border: none;
+    padding: 6px;
+    border-radius: 6px;
+    font-size: 12px;
 }
